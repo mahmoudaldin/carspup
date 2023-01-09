@@ -10,6 +10,11 @@ import com.netty.receiver.tcpClient.Write4;
 import com.netty.receiver.tcpClient.Write5;
 import com.netty.receiver.tcpClient.Write6;
 import com.netty.receiver.tcpClient.WriteRifle;
+import com.netty.receiver.tcpClient.WriteRifle10;
+import com.netty.receiver.tcpClient.WriteRifle11;
+import com.netty.receiver.tcpClient.WriteRifle12;
+import com.netty.receiver.tcpClient.WriteRifle13;
+import com.netty.receiver.tcpClient.WriteRifle14;
 import com.netty.receiver.tcpClient.WriteRifle2;
 import com.netty.receiver.tcpClient.WriteRifle3;
 import com.netty.receiver.tcpClient.WriteRifle4;
@@ -17,6 +22,7 @@ import com.netty.receiver.tcpClient.WriteRifle5;
 import com.netty.receiver.tcpClient.WriteRifle6;
 import com.netty.receiver.tcpClient.WriteRifle7;
 import com.netty.receiver.tcpClient.WriteRifle8;
+import com.netty.receiver.tcpClient.WriteRifle9;
 
 @Configuration
 public class AppConfig {
@@ -88,5 +94,35 @@ public class AppConfig {
 	@Bean
 	public WriteRifle8 getRifle8() {
 		return new WriteRifle8();
+	}
+
+	@Bean
+	public WriteRifle9 getRifle9() {
+		return new WriteRifle9();
+	}
+
+	@Bean
+	public WriteRifle10 getRifle10() {
+		return new WriteRifle10();
+	}
+
+	@Bean
+	public WriteRifle11 getRifle11() {
+		return new WriteRifle11();
+	}
+
+	@Bean
+	public WriteRifle12 getRifle12() {
+		return new WriteRifle12();
+	}
+
+	@Bean
+	public WriteRifle13 getRifle13() {
+		return new WriteRifle13();
+	}
+
+	@Bean
+	public WriteRifle14 getRifle14() {
+		return new WriteRifle14();
 	}
 }

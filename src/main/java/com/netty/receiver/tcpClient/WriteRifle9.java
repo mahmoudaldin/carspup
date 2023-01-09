@@ -27,7 +27,7 @@ import reactor.core.publisher.Mono;
 import reactor.netty.Connection;
 import reactor.netty.tcp.TcpClient;
 
-public class WriteRifle4 extends Thread {
+public class WriteRifle9 extends Thread {
 	static Scanner scan = new Scanner(System.in);
 	Connection connection2;
 	TcpClient tcpClient;
@@ -44,7 +44,7 @@ public class WriteRifle4 extends Thread {
 
 	private static void loadImies() {
 
-		long imeiValue = 111111111112610L;
+		long imeiValue = 111111111115110L;
 		for (int i = 1; i <= 500; i++) {
 
 			imeis.add("" + (imeiValue++));
@@ -59,9 +59,9 @@ public class WriteRifle4 extends Thread {
 			HandshakeHandler handler = new HandshakeHandler();
 
 			Connection connection = TcpClient.create().port(findRandomOpenPortOnAllLocalInterfaces()).wiretap(true)
-					.host( /* "51.138.63.42" */ /* "172.75.75.102" */  /* "localhost" */ "92.253.23.156" ).port(9022)//
-					// .host("3.tcp.ngrok.io").port(21087)
+					.host( /* "51.138.63.42" */ /* "172.75.75.102" */ /* "localhost" */ "92.253.23.156").port(9022)//
 //					 .host("8.tcp.ngrok.io").port(18694)
+					// .host("3.tcp.ngrok.io").port(21087)
 					.handle(handler.handleInbound())
 //					         .handle((inbound, outbound) -> {
 //					        	 

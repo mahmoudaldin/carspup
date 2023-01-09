@@ -1,7 +1,5 @@
 package com.netty.receiver;
 
-import java.lang.reflect.Field;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -20,6 +18,11 @@ import com.netty.receiver.tcpClient.Write4;
 import com.netty.receiver.tcpClient.Write5;
 import com.netty.receiver.tcpClient.Write6;
 import com.netty.receiver.tcpClient.WriteRifle;
+import com.netty.receiver.tcpClient.WriteRifle10;
+import com.netty.receiver.tcpClient.WriteRifle11;
+import com.netty.receiver.tcpClient.WriteRifle12;
+import com.netty.receiver.tcpClient.WriteRifle13;
+import com.netty.receiver.tcpClient.WriteRifle14;
 import com.netty.receiver.tcpClient.WriteRifle2;
 import com.netty.receiver.tcpClient.WriteRifle3;
 import com.netty.receiver.tcpClient.WriteRifle4;
@@ -27,6 +30,7 @@ import com.netty.receiver.tcpClient.WriteRifle5;
 import com.netty.receiver.tcpClient.WriteRifle6;
 import com.netty.receiver.tcpClient.WriteRifle7;
 import com.netty.receiver.tcpClient.WriteRifle8;
+import com.netty.receiver.tcpClient.WriteRifle9;
 
 @SpringBootApplication
 public class ReceiverApplication implements ApplicationRunner {
@@ -67,6 +71,18 @@ public class ReceiverApplication implements ApplicationRunner {
 	WriteRifle7 rifle7;
 	@Autowired
 	WriteRifle8 rifle8;
+	@Autowired
+	WriteRifle9 rifle9;
+	@Autowired
+	WriteRifle10 rifle10;
+	@Autowired
+	WriteRifle11 rifle11;
+	@Autowired
+	WriteRifle12 rifle12;
+	@Autowired
+	WriteRifle13 rifle13;
+	@Autowired
+	WriteRifle14 rifle14;
 
 	public static ConfigurableApplicationContext context;
 
@@ -113,6 +129,30 @@ public class ReceiverApplication implements ApplicationRunner {
 		if (rifless.contains("8")) {
 			System.out.println("Start rifle 8 ...");
 			rifle8.start();
+		}
+		if (rifless.contains("9")) {
+			System.out.println("Start rifle 9 ...");
+			rifle9.start();
+		}
+		if (rifless.contains("10")) {
+			System.out.println("Start rifle 10 ...");
+			rifle10.start();
+		}
+		if (rifless.contains("11")) {
+			System.out.println("Start rifle 11 ...");
+			rifle11.start();
+		}
+		if (rifless.contains("12")) {
+			System.out.println("Start rifle 12 ...");
+			rifle12.start();
+		}
+		if (rifless.contains("13")) {
+			System.out.println("Start rifle 13 ...");
+			rifle13.start();
+		}
+		if (rifless.contains("14")) {
+			System.out.println("Start rifle 14 ...");
+			rifle14.start();
 		}
 
 	}

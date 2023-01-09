@@ -61,11 +61,11 @@ public class WriteRifle extends Thread {
 
 			Connection connection = TcpClient.create()
 					/* .port(findRandomOpenPortOnAllLocalInterfaces()) */.wiretap(true)
-//					.host( /* "51.138.63.42" */ /* "172.75.75.102" */  "92.253.23.156"  /* "20.31.101.11" */
-//			/* "localhost" */)
-//					.port(9022)
+					.host( /* "51.138.63.42" */ /* "172.75.75.102" */  "92.253.23.156"  /* "20.31.101.11" */
+			/* "localhost" */)
+					.port(9022)
 					//
-					 .host("8.tcp.ngrok.io").port(18694)
+//					 .host("8.tcp.ngrok.io").port(18694)
 					// .host("3.tcp.ngrok.io").port(21087)
 					.handle(handler.handleInbound())
 //					         .handle((inbound, outbound) -> {
