@@ -78,16 +78,16 @@ public class ReceiverApplication implements ApplicationRunner {
 		 */
 
 		rifle.start();
-		rifle2.start();
-
-		rifle3.start();
-		rifle4.start();
-
-		rifle5.start();
-		rifle6.start();
-
-		rifle7.start();
-		rifle8.start();
+//		rifle2.start();
+//
+//		rifle3.start();
+//		rifle4.start();
+//
+//		rifle5.start();
+//		rifle6.start();
+//
+//		rifle7.start();
+//		rifle8.start();
 
 	}
 
