@@ -97,7 +97,7 @@ public class WriteRifle6 extends Thread {
 		});
 
 		try {
-			Thread.sleep(100);
+			Thread.sleep(1000);
 		} catch (InterruptedException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();

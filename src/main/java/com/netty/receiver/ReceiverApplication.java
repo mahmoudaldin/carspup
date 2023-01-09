@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
@@ -47,6 +48,9 @@ public class ReceiverApplication implements ApplicationRunner {
 	@Autowired
 	Write6 server6;
 
+	@Value(value = "${rifles}")
+	String[] rifles;
+
 	@Autowired
 	WriteRifle rifle;
 	@Autowired
@@ -77,17 +81,39 @@ public class ReceiverApplication implements ApplicationRunner {
 		 * server5.start(); server6.start();
 		 */
 
-		rifle.start();
-//		rifle2.start();
-//
-//		rifle3.start();
-//		rifle4.start();
-//
-//		rifle5.start();
-//		rifle6.start();
-//
-//		rifle7.start();
-//		rifle8.start();
+		List<String> rifless = Arrays.asList(rifles);
+		if (rifless.contains("1")) {
+			System.out.println("Start rifle 1 ...");
+			rifle.start();
+		}
+		if (rifless.contains("2")) {
+			System.out.println("Start rifle 2 ...");
+			rifle2.start();
+		}
+		if (rifless.contains("3")) {
+			System.out.println("Start rifle 3 ...");
+			rifle3.start();
+		}
+		if (rifless.contains("4")) {
+			System.out.println("Start rifle 4 ...");
+			rifle4.start();
+		}
+		if (rifless.contains("5")) {
+			System.out.println("Start rifle 5 ...");
+			rifle5.start();
+		}
+		if (rifless.contains("6")) {
+			System.out.println("Start rifle 6 ...");
+			rifle6.start();
+		}
+		if (rifless.contains("7")) {
+			System.out.println("Start rifle 7 ...");
+			rifle7.start();
+		}
+		if (rifless.contains("8")) {
+			System.out.println("Start rifle 8 ...");
+			rifle8.start();
+		}
 
 	}
 
