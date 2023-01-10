@@ -1,6 +1,8 @@
 package com.netty.receiver.tcpClient;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Random;
 
 import com.netty.receiver.handler.DataTypeUtil;
@@ -19,10 +21,18 @@ public class Car {
 
 	public static void main(String[] args) {
 
-		long imei = 865209039451291l;
-		ByteBuf bb = Unpooled.buffer(8);
-		bb.writeLongLE(imei);
-		System.err.println(DataTypeUtil.bytesToHex(bb.array()));
+//		long imei = 865209039451291l;
+//		ByteBuf bb = Unpooled.buffer(8);
+//		bb.writeLongLE(imei);
+//		System.err.println(DataTypeUtil.bytesToHex(bb.array()));
+
+		HashSet set = new HashSet<>();
+		for (int i = 0; i < 100000000; i++) {
+			set.add(getRandomACC());
+
+		}
+		System.err.println(set);
+
 	}
 
 	static String getRandomSpeed() {
@@ -130,6 +140,20 @@ public class Car {
 	public String toString() {
 		// TODO Auto-generated method stub
 		return "" + speed;
+	}
+
+	static String getRandomACC() {
+		// TODO Auto-generated method stub
+		int low = 0;
+		int high = 2;
+		int result = 0;
+		result = r.nextInt(high - low) + low;
+
+		if (result != 0 && result != 1) {
+			return "00";
+		}
+
+		return "0" + result;
 	}
 
 }

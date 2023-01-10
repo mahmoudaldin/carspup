@@ -118,7 +118,7 @@ public class WriteRifle extends Thread {
 						+ "00054243452f440a0f"
 				/* payload */ + "02020800" + imeiToHex(e.getKey())// Imei Value
 						+ "01" + "5400" + Car.getTime()// time
-						+ "0d02b0" + "00c04faa367c0341" + "050340eca4030b30050430d20f030c300500302a30" + "01"// IGN5
+						+ "0d02b0" + "00c04faa367c0341" + "050340eca4030b30050430d20f030c300500302a30" + Car.getRandomACC()// IGN5
 				// or
 				// Acc
 						+ "13" + "00" + "040720" + Car.getStaticFuel()// fuel
