@@ -61,7 +61,7 @@ public class WriteRifle extends Thread {
 
 			Connection connection = TcpClient.create()
 					/* .port(findRandomOpenPortOnAllLocalInterfaces()) */.wiretap(true)
-					.host( /* "51.138.63.42" */ /* "172.75.75.102" */  "92.253.23.156"  /* "20.31.101.11" */
+					.host( /* "51.138.63.42" */ /* "172.75.75.102" */  "212.35.71.156" /* "92.253.23.156" */  /* "20.31.101.11" */
 			/* "localhost" */)
 					.port(9022)
 					//

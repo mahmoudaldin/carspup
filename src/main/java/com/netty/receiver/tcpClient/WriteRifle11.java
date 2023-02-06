@@ -59,7 +59,7 @@ public class WriteRifle11 extends Thread {
 			HandshakeHandler handler = new HandshakeHandler();
 
 			Connection connection = TcpClient.create().port(findRandomOpenPortOnAllLocalInterfaces()).wiretap(true)
-					.host( /* "51.138.63.42" */ /* "172.75.75.102" */ /* "localhost" */ "92.253.23.156").port(9022)//
+					.host( /* "51.138.63.42" */ /* "172.75.75.102" */ /* "localhost" */ "212.35.71.156" /* "92.253.23.156" */).port(9022)//
 //					 .host("8.tcp.ngrok.io").port(18694)
 					// .host("3.tcp.ngrok.io").port(21087)
 					.handle(handler.handleInbound())
