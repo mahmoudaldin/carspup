@@ -59,7 +59,7 @@ public class WriteRifle12 extends Thread {
 			HandshakeHandler handler = new HandshakeHandler();
 
 			Connection connection = TcpClient.create().port(findRandomOpenPortOnAllLocalInterfaces()).wiretap(true)
-					.host( /* "51.138.63.42" */ /* "172.75.75.102" */ /* "localhost" */ "212.35.71.156" /* "92.253.23.156" */).port(9022)//
+					.host( /* "51.138.63.42" */ /* "172.75.75.102" */ /* "localhost" */ "212.35.71.156" /* "92.253.23.156" */).port(9023)//
 //					 .host("8.tcp.ngrok.io").port(18694)
 					// .host("3.tcp.ngrok.io").port(21087)
 					.handle(handler.handleInbound())
@@ -202,7 +202,7 @@ public class WriteRifle12 extends Thread {
 		HandshakeHandler handler = new HandshakeHandler();
 
 		Connection connection = TcpClient.create().option(ChannelOption.CONNECT_TIMEOUT_MILLIS, 3000).wiretap(true)
-				.host("localhost").port(9022).handle(handler.handleInbound())
+				.host("localhost").port(9023).handle(handler.handleInbound())
 //				         .handle((inbound, outbound) -> {
 //				        	 
 //				        	 
@@ -247,7 +247,7 @@ public class WriteRifle12 extends Thread {
 //		HandshakeHandler handler = new HandshakeHandler();
 //
 //		Connection connection = TcpClient.create().port(9023).wiretap(true).host( /* "51.138.63.42" */ "localhost")
-//				.port(9022).handle(handler.handleInbound())
+//				.port(9023).handle(handler.handleInbound())
 //
 //				.connectNow();
 //
