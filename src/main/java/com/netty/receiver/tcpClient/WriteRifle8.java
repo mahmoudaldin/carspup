@@ -108,13 +108,15 @@ public class WriteRifle8 extends Thread {
 				String speed = Car.getRandomSpeed();
 				byte[] data = DatatypeConverter.parseHexBinary("32" + "6f" // packet len
 						+ "00054243452f440a0f"
-				/* payload */ + "02020800" + imeiToHex(e.getKey())// Imei Value
+						/* payload */ + "02020800" + "9AF4732DE7120300"// Imei Value
 						+ "01" + "5400" + Car.getTime()// time
-						+ "0d02b0" + "00c04faa367c0341" + "050340eca4030b30050430d20f030c300500302a30" + "01"// IGN5
-				// or
-				// Acc
+						+ "0d02b0" + "00c04faa367c0341" + "050340eca4030b30050430" + Car.getRandomDeviceBattery()
+						+ "030c30050030" + Car.getRandomExternalBattery() 
+						+ "01"// IGN5 //
+								// or //
+								// Acc
 						+ "13" + "00" + "040720" + Car.getRandomFuel()// fuel
-						+ "00020000640000650000630000620004082083" + "05"// speed value type
+						+ "000200006400006500006300006200040820"+ Car.getRandomTemp() + "05"// speed value type
 						+ "0020"// speed identifier
 						+ speed///////
 						+ "0e00d0" + Car.getRandomLat()// lat

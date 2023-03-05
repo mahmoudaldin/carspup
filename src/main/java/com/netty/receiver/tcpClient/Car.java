@@ -26,12 +26,13 @@ public class Car {
 //		bb.writeLongLE(imei);
 //		System.err.println(DataTypeUtil.bytesToHex(bb.array()));
 
-		HashSet set = new HashSet<>();
-		for (int i = 0; i < 100000000; i++) {
-			set.add(getRandomACC());
+		// HashSet set = new HashSet<>();
+		for (int i = 0; i < 1000; i++) {
+			// set.add(getRandomACC());
+			System.err.println(getRandomACC());
 
 		}
-		System.err.println(set);
+		// System.err.println(set);
 
 	}
 
@@ -55,6 +56,32 @@ public class Car {
 		String speed = DataTypeUtil.bytesToHex(bb.array());
 		bb.release();
 		return speed;
+	}
+
+	static String getRandomDeviceBattery() {
+		int low = 3000;
+		int high = 5000;
+		int result = 0;
+		result = r.nextInt(high - low) + low;
+		// System.out.println(result);
+		ByteBuf bb = Unpooled.buffer(2);
+		bb.writeShortLE(result);
+		String batt = DataTypeUtil.bytesToHex(bb.array());
+		bb.release();
+		return batt;
+	}
+
+	static String getRandomExternalBattery() {
+		int low = 11000;
+		int high = 21000;
+		int result = 0;
+		result = r.nextInt(high - low) + low;
+		// System.out.println(result);
+		ByteBuf bb = Unpooled.buffer(2);
+		bb.writeShortLE(result);
+		String batt = DataTypeUtil.bytesToHex(bb.array());
+		bb.release();
+		return batt;
 	}
 
 	static String getTime() {
@@ -86,6 +113,19 @@ public class Car {
 		String fuel = DataTypeUtil.bytesToHex(bb.array());
 		bb.release();
 		return fuel;
+	}
+
+	static String getRandomTemp() {
+		int low = 0;
+		int high = 255;
+		int result = 0;
+		result = r.nextInt(high - low) + low;
+		// System.out.println(result);
+		ByteBuf bb = Unpooled.buffer(1);
+		bb.writeByte(result);
+		String temp = DataTypeUtil.bytesToHex(bb.array());
+		bb.release();
+		return temp;
 	}
 
 	static String getRandomLat() {
