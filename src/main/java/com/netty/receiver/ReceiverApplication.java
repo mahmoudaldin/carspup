@@ -31,6 +31,12 @@ import com.netty.receiver.tcpClient.WriteRifle6;
 import com.netty.receiver.tcpClient.WriteRifle7;
 import com.netty.receiver.tcpClient.WriteRifle8;
 import com.netty.receiver.tcpClient.WriteRifle9;
+import com.netty.receiver.tcpClient.WriteRupRifle15;
+import com.netty.receiver.tcpClient.WriteRupRifle16;
+import com.netty.receiver.tcpClient.WriteRupRifle17;
+import com.netty.receiver.tcpClient.WriteRupRifle18;
+import com.netty.receiver.tcpClient.WriteRupRifle19;
+import com.netty.receiver.tcpClient.WriteRupRifle20;
 
 @SpringBootApplication
 public class ReceiverApplication implements ApplicationRunner {
@@ -83,6 +89,18 @@ public class ReceiverApplication implements ApplicationRunner {
 	WriteRifle13 rifle13;
 	@Autowired
 	WriteRifle14 rifle14;
+	@Autowired
+	WriteRupRifle15 rifleRup15;
+	@Autowired
+	WriteRupRifle16 rifleRup16;
+	@Autowired
+	WriteRupRifle17 rifleRup17;
+	@Autowired
+	WriteRupRifle18 rifleRup18;
+	@Autowired
+	WriteRupRifle19 rifleRup19;
+	@Autowired
+	WriteRupRifle20 rifleRup20;
 
 	public static ConfigurableApplicationContext context;
 
@@ -153,6 +171,30 @@ public class ReceiverApplication implements ApplicationRunner {
 		if (rifless.contains("14")) {
 			System.out.println("Start rifle 14 ...");
 			rifle14.start();
+		}
+		if (rifless.contains("15")) {
+			System.out.println("Start rup rifle 15 ...");
+			rifleRup15.start();
+		}
+		if (rifless.contains("16")) {
+			System.out.println("Start rup rifle 16 ...");
+			rifleRup16.start();
+		}
+		if (rifless.contains("17")) {
+			System.out.println("Start rup rifle 17 ...");
+			rifleRup17.start();
+		}
+		if (rifless.contains("18")) {
+			System.out.println("Start rup rifle 18 ...");
+			rifleRup18.start();
+		}
+		if (rifless.contains("19")) {
+			System.out.println("Start rup rifle 19 ...");
+			rifleRup19.start();
+		}
+		if (rifless.contains("20")) {
+			System.out.println("Start rup rifle 20 ...");
+			rifleRup20.start();
 		}
 
 	}

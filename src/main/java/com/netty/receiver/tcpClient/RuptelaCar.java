@@ -1,20 +1,20 @@
 package com.netty.receiver.tcpClient;
 
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Random;
+
+import javax.xml.bind.DatatypeConverter;
 
 import com.netty.receiver.handler.DataTypeUtil;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 
-public class Car {
+public class RuptelaCar {
 	int speed;
 	static final Random r = new Random();
 
-	public Car(int speed) {
+	public RuptelaCar(int speed) {
 		super();
 		this.speed = speed;
 	}
@@ -27,12 +27,15 @@ public class Car {
 //		System.err.println(DataTypeUtil.bytesToHex(bb.array()));
 
 		// HashSet set = new HashSet<>();
-		for (int i = 0; i < 1000; i++) {
-			// set.add(getRandomACC());
-			System.err.println(getRandomACC());
-
-		}
+//		for (int i = 0; i < 1000; i++) {
+//			// set.add(getRandomACC());
+//			System.err.println(getRandomACC());
+//
+//		}
 		// System.err.println(set);
+
+		System.err.println(crc16(
+				"00030E55AC32021A440002631F913D00000020DDE53A0EE3ED84004227C41300000900070C000500001C0100B000005800001B1900062A00AD000020270031000032060033EE00880004001E1010001D65FC00890000004E00ED0300300000000000960000A5A20041193F903600631F91B700000020DDE53A0EE3ED84003E27C41500000700AE0D000500001C0100B000005800001B1900062A00AD0000202700AE010031000032060033EE00880004001E1010001D65FD00890000004E00ED0300300000000000960000A5A20041193F903600"));
 
 	}
 
@@ -41,9 +44,9 @@ public class Car {
 		int high = 140;
 		int result = 0;
 		result = r.nextInt(high - low) + low;
-		// System.out.println(result);
+//		System.out.println("spd:" + result);
 		ByteBuf bb = Unpooled.buffer(2);
-		bb.writeShortLE(result /* 50 */);
+		bb.writeShort((short) (Math.ceil(result /* 50 */ / 0.539957)));
 		String speed = DataTypeUtil.bytesToHex(bb.array());
 		bb.release();
 		return speed;
@@ -52,7 +55,7 @@ public class Car {
 	static String getSpeedZer0() {
 		// System.out.println(result);
 		ByteBuf bb = Unpooled.buffer(2);
-		bb.writeShortLE(0);
+		bb.writeShort(0);
 		String speed = DataTypeUtil.bytesToHex(bb.array());
 		bb.release();
 		return speed;
@@ -65,7 +68,7 @@ public class Car {
 		result = r.nextInt(high - low) + low;
 		// System.out.println(result);
 		ByteBuf bb = Unpooled.buffer(2);
-		bb.writeShortLE(result);
+		bb.writeShort(result);
 		String batt = DataTypeUtil.bytesToHex(bb.array());
 		bb.release();
 		return batt;
@@ -78,7 +81,7 @@ public class Car {
 		result = r.nextInt(high - low) + low;
 		// System.out.println(result);
 		ByteBuf bb = Unpooled.buffer(2);
-		bb.writeShortLE(result);
+		bb.writeShort(result);
 		String batt = DataTypeUtil.bytesToHex(bb.array());
 		bb.release();
 		return batt;
@@ -87,7 +90,7 @@ public class Car {
 	static String getTime() {
 
 		ByteBuf bb = Unpooled.buffer(4);
-		bb.writeIntLE((int) (new Date().getTime() / 1000));
+		bb.writeInt((int) (new Date().getTime() / 1000));
 		String time = DataTypeUtil.bytesToHex(bb.array());
 		bb.release();
 		return time;
@@ -98,9 +101,9 @@ public class Car {
 		int high = 140;
 		int result = 0;
 		result = r.nextInt(high - low) + low;
-		// System.out.println(result);
+		 System.out.println(result);
 		ByteBuf bb = Unpooled.buffer(1);
-		bb.writeByte(result);
+		bb.writeShort(result);
 		String fuel = DataTypeUtil.bytesToHex(bb.array());
 		bb.release();
 		return fuel;
@@ -109,7 +112,7 @@ public class Car {
 	static String getStaticFuel() {
 		// System.out.println(result);
 		ByteBuf bb = Unpooled.buffer(1);
-		bb.writeByte(50);
+		bb.writeShort(50);
 		String fuel = DataTypeUtil.bytesToHex(bb.array());
 		bb.release();
 		return fuel;
@@ -121,8 +124,8 @@ public class Car {
 		int result = 0;
 		result = r.nextInt(high - low) + low;
 		// System.out.println(result);
-		ByteBuf bb = Unpooled.buffer(1);
-		bb.writeByte(result);
+		ByteBuf bb = Unpooled.buffer(2);
+		bb.writeShort(result);
 		String temp = DataTypeUtil.bytesToHex(bb.array());
 		bb.release();
 		return temp;
@@ -136,7 +139,7 @@ public class Car {
 		result = low + new Random().nextFloat() * (high - low);
 		// System.out.println(result);
 		ByteBuf bb = Unpooled.buffer(4);
-		bb.writeFloatLE(result /* 21.5f */);
+		bb.writeInt((int) (result /* 21.5f */ * 10000000));
 		String lat = DataTypeUtil.bytesToHex(bb.array());
 		bb.release();
 		return lat;
@@ -146,7 +149,7 @@ public class Car {
 
 		// System.out.println(result);
 		ByteBuf bb = Unpooled.buffer(4);
-		bb.writeFloatLE(/* result */ 27.43f);
+		bb.writeInt((int) (/* result */ 27.43f * 10000000));
 		String lat = DataTypeUtil.bytesToHex(bb.array());
 		bb.release();
 		return lat;
@@ -160,7 +163,7 @@ public class Car {
 		result = low + new Random().nextFloat() * (high - low);
 		// System.out.println(result);
 		ByteBuf bb = Unpooled.buffer(4);
-		bb.writeFloatLE(result /* 24.5f */);
+		bb.writeInt((int) (result /* 24.5f */ * 10000000));
 		String lon = DataTypeUtil.bytesToHex(bb.array());
 		bb.release();
 		return lon;
@@ -170,7 +173,7 @@ public class Car {
 
 		// System.out.println(result);
 		ByteBuf bb = Unpooled.buffer(4);
-		bb.writeFloatLE(41.6f);
+		bb.writeInt((int) (41.6f * 10000000));
 		String lon = DataTypeUtil.bytesToHex(bb.array());
 		bb.release();
 		return lon;
@@ -194,6 +197,93 @@ public class Car {
 		}
 
 		return "0" + result;
+	}
+	static String getRandomMovment() {
+		return getRandomACC();
+	}
+
+//	public static String calculateChecksum(String hexString) {
+//		byte[] bytes = hexStringToByteArray(hexString);
+//		int crc = calculateCRC16Kermit(bytes);
+//		return Integer.toHexString(crc).toUpperCase();
+//	}
+//
+//	private static byte[] hexStringToByteArray(String hexString) {
+//		int len = hexString.length();
+//		byte[] data = new byte[len / 2];
+//		for (int i = 0; i < len; i += 2) {
+//			data[i / 2] = (byte) ((Character.digit(hexString.charAt(i), 16) << 4)
+//					+ Character.digit(hexString.charAt(i + 1), 16));
+//		}
+//		return data;
+//	}
+//
+//	private static int calculateCRC16Kermit(byte[] bytes) {
+//		int crc = 0;
+//		for (byte b : bytes) {
+//			crc = (crc >>> 8) | (crc << 8);
+//			crc ^= (b & 0xFF);
+//			crc ^= ((crc & 0xFF) >> 4);
+//			crc ^= (crc << 12) & 0xFFFF;
+//			crc ^= ((crc & 0xFF) << 5) & 0xFFFF;
+//		}
+//		return crc & 0xFFFF;
+//	}
+
+	public static int crc16(byte[] data) {
+		int poly = 0x8408; // reversed 0x1021
+		int crc = 0;
+		for (int i = 0; i < data.length; i++) {
+			crc ^= (data[i] & 0xFF);
+			for (int j = 0; j < 8; j++) {
+				int carry = crc & 1;
+				crc >>= 1;
+				if (carry == 1) {
+					crc ^= poly;
+				}
+			}
+		}
+		return crc & 0xFFFF;
+	}
+
+	public static String crc16(String hexString) {
+		int poly = 0x8408; // reversed 0x1021
+		int crc = 0;
+		byte[] data = hexStringToByteArray(hexString);
+		for (int i = 0; i < data.length; i++) {
+			crc ^= (data[i] & 0xFF);
+			for (int j = 0; j < 8; j++) {
+				int carry = crc & 1;
+				crc >>= 1;
+				if (carry == 1) {
+					crc ^= poly;
+				}
+			}
+		}
+		return String.format("%04X", crc);
+	}
+
+	private static byte[] hexStringToByteArray(String hexString) {
+		int len = hexString.length();
+		byte[] data = new byte[len / 2];
+		for (int i = 0; i < len; i += 2) {
+			data[i / 2] = (byte) ((Character.digit(hexString.charAt(i), 16) << 4)
+					+ Character.digit(hexString.charAt(i + 1), 16));
+		}
+		return data;
+	}
+
+	public static int countBytes(String... hexStrings) {
+		int totalBytes = 0;
+		for (String hexString : hexStrings) {
+			totalBytes += hexString.length() / 2;
+		}
+		return totalBytes;
+	}
+
+	public static String countBytes(String hexString) {
+		int totalBytes = hexString.length() / 2;
+		return String.format("%04X", totalBytes);
 	}
 
 }

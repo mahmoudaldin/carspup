@@ -23,6 +23,12 @@ import com.netty.receiver.tcpClient.WriteRifle6;
 import com.netty.receiver.tcpClient.WriteRifle7;
 import com.netty.receiver.tcpClient.WriteRifle8;
 import com.netty.receiver.tcpClient.WriteRifle9;
+import com.netty.receiver.tcpClient.WriteRupRifle15;
+import com.netty.receiver.tcpClient.WriteRupRifle16;
+import com.netty.receiver.tcpClient.WriteRupRifle17;
+import com.netty.receiver.tcpClient.WriteRupRifle18;
+import com.netty.receiver.tcpClient.WriteRupRifle19;
+import com.netty.receiver.tcpClient.WriteRupRifle20;
 
 @Configuration
 public class AppConfig {
@@ -124,5 +130,35 @@ public class AppConfig {
 	@Bean
 	public WriteRifle14 getRifle14() {
 		return new WriteRifle14();
+	}
+
+	@Bean
+	public WriteRupRifle15 getRupRifle15() {
+		return new WriteRupRifle15();
+	}
+	
+	@Bean
+	public WriteRupRifle16 getRupRifle16() {
+		return new WriteRupRifle16();
+	}
+	
+	@Bean
+	public WriteRupRifle17 getRupRifle17() {
+		return new WriteRupRifle17();
+	}
+	
+	@Bean
+	public WriteRupRifle18 getRupRifle18() {
+		return new WriteRupRifle18();
+	}
+	
+	@Bean
+	public WriteRupRifle19 getRupRifle19() {
+		return new WriteRupRifle19();
+	}
+	
+	@Bean
+	public WriteRupRifle20 getRupRifle20() {
+		return new WriteRupRifle20();
 	}
 }
