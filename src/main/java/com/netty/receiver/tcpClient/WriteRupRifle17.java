@@ -64,7 +64,7 @@ public class WriteRupRifle17 extends Thread {
 					.host( /* "51.138.63.42" */ /* "172.75.75.102" */ /* "212.35.71.156" */ /* "92.253.23.156" */ /*
 																													 * "20.31.101.11"
 																													 */
-							/* "localhost" */ "3.134.125.175")
+							/* "localhost" */ /* "3.134.125.175" */  "212.35.71.156")
 					.port(9024)
 			//
 //					 .host("8.tcp.ngrok.io").port(18694)
@@ -156,7 +156,7 @@ public class WriteRupRifle17 extends Thread {
 //					+ "00ED"// Temperature sensor0
 					+ RuptelaCar.getRandomTemp() + "00CD" + RuptelaCar.getRandomFuel()
 
-					+ "03"// NO. of 4Bytes Sensors
+					+ "04"// NO. of 4Bytes Sensors
 
 					+ "0030"// SensorID
 					+ "00000000"// Sensor
@@ -164,11 +164,13 @@ public class WriteRupRifle17 extends Thread {
 					+ "0000A5A2"// Sensor
 					+ "0041" // ODOMETER ID
 					+ "193F9036"// ODOMETER
+					+ "0072" // CAN TOTALDISTANCE ID
+					+ "193F9036" // CAN TOTALDISTANCE
 					+ "00"// NO. of 8Bytes Sensors
 			;
 
 //			System.out.println(dataWithoutLength);
-			String allData = /* RuptelaCar.countBytes(dataWithoutLength) */ "00b0" + dataWithoutLength
+			String allData = /* RuptelaCar.countBytes(dataWithoutLength) */ "0078" + dataWithoutLength
 					+ RuptelaCar.crc16(dataWithoutLength);
 			byte[] connData = DatatypeConverter.parseHexBinary(allData);
 			connection.outbound().sendByteArray(Mono.just(connData)).then().share().block(Duration.ofSeconds(12));
@@ -252,7 +254,7 @@ public class WriteRupRifle17 extends Thread {
 						+ RuptelaCar.getRandomTemp() 
 						+ "00CD" + RuptelaCar.getRandomFuel()
 
-						+ "03"// NO. of 4Bytes Sensors
+						+ "04"// NO. of 4Bytes Sensors
 
 						+ "0030"// SensorID
 						+ "00000000"// Sensor
@@ -260,11 +262,13 @@ public class WriteRupRifle17 extends Thread {
 						+ "0000A5A2"// Sensor
 						+ "0041" // ODOMETER ID
 						+ "193F9036"// ODOMETER
+						+ "0072" // CAN TOTALDISTANCE ID
+						+ "193F9036" // CAN TOTALDISTANCE
 						+ "00"// NO. of 8Bytes Sensors
 				;
 
 //				System.out.println(dataWithoutLength);
-				String allPayloadData = /* RuptelaCar.countBytes(dataWithoutLength) */ "00b0" + payloadDataWithoutLength
+				String allPayloadData = /* RuptelaCar.countBytes(payloadDataWithoutLength) */ "0078" + payloadDataWithoutLength
 						+ RuptelaCar.crc16(payloadDataWithoutLength);
 
 				byte[] data = DatatypeConverter.parseHexBinary(allPayloadData);
